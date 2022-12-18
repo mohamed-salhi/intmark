@@ -12,13 +12,8 @@
             <img src="{{asset('assets/images/Comp 1_2.gif')}}" class="gif-img">
       </div>
     <div class="col-md-6" id="continer-text">
-       <h3>انتمارك</h3>
-       <h1>للتسويق الرقمي</h1>
-       <p>نقدم أفضل الخدمــات الدعائية والتســــويقية للمؤسسات والشــــركات والعلامات التجـارية والافراد في الوطن العربي،
-     مـــــن خلال انتاج جميع الوسائل المقروءة، المسموعة والمرئية، من كتابة المحتوي والتصميم الجرافيكي،
-      إنتاج الفيديو، انتاج الصوت والموسيقي بأعلى درجــــة من الدقة والإبداع، وتامين الانتشار الاوسع والاسرع
-      من خلال التسويق الإلكتروني للمواقع والمتاجر وتطبيقات الموبايل ومنصات التواصل الاجتماعي</p>
-  </div>
+        <h3>{{$row[1]->name}}</h3>
+        <p class="info_par2">{{$row[1]->description}}
 
  </div>
 
@@ -68,7 +63,7 @@
 
         <div class="services-card">
             <h3>موظفين</h3>
-            <span class="num" data-goal="175">0</span>
+            <span class="num" data-goal="{{$countEmp}}">0</span>
         </div>
         <div class="services-card"  id="border">
             <h3> عملاء ثقة</h3>
@@ -76,7 +71,7 @@
         </div>
         <div class="services-card" id="border">
             <h3>مشاريع مكتملة</h3>
-            <span class="num" data-goal="150">0</span>
+            <span class="num" data-goal="{{$count}}">0</span>
         </div>
     </div>
 </div>

@@ -11,8 +11,8 @@
         </div>
         <div class="wow bounceInDown info col-lg-7" data-wow-duration="1.5s">
             <p class="intmark">انتمارك</p>
-            <h1>للتسويق الرقمي</h1>
-            <p class="info_par">بصفتنا وكالة انتمارك للتسويق الرقمي يقوم فريقنا  بتنمية أعمالك بسـرعة وزيـادة مبيعاتك مـع موظفينا الخبـراء منـذ عـام 2014 ، نحـــن نعمـل بكفــاءة وجــودة عــــالية </p>
+            <h1>{{$rows[0]->name}}</h1>
+            <p class="info_par">{{$rows[0]->description}} </p>
             <div class="How_Work">
                   <div class="how">
                     <span>كيف نعمل ؟ </span>
@@ -44,8 +44,8 @@
                 <img src="{{ asset('assets/images/من نحن.svg')}}" alt=""> <span class="aps">من نحن</span>
                </div>
                <div>
-                <h1>عزز عملك مع انتمارك</h1>
-               <p class="info_par1">شركة إعلانية إبداعية تنتج محتوى إبداعي ومواقع ويب وتطبيقات الهواتف المحمولة وتصميم الجرافيك ، نحن نؤمن بكفاءتنا في وضع استيراتيجيات لإدارة حسابات التواصل الاجتماعي وإنتاج الحملات الإعلانية وتصميم UX/UI للتطبيقات ومواقع الويب ولوحات التحكم ، بالنسبة لنا ، كل مشروع يمثل مشروعاً ذا مغزى ومغامرة نشاركها مع عملائنا عن طريق تميزنا في الأداء </p>
+                   <h1>{{$rows[1]->name}}</h1>
+                   <p class="info_par">{{$rows[1]->description}} </p>
                <a href="" class="btn btn-outline-warning btn-px "> <i class="fas fa-chevron-left"></i> اعرف اكثر</a>
                </div>
             </div>
@@ -74,73 +74,21 @@
         </div>
         <div class="container">
         <div class="cardsByMe containerByMe m-auto col-lg-10">
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_bl"><img src="{{ asset('assets/images/code.svg')}}" alt=""></div>
-                    <p>تطوير الويب</p>
-                </div>
-                <div class="para">
-                    <p>نقوم بإنشاء مواقع ويب فريدة تعتمد على أحدث التقنيات. يأخذ فريقنا مشاكل عملك في الاعتبار ويقدم حلولاً منهجية ومنطقية ومثبتة</p>
-                </div>
-                <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_or"><img src="{{ asset('assets/images/ibra.svg')}}" alt=""></div>
-                    <p>تصميم الواجهات
-                        <span class="font">
-                          UX/UI
-                        </span>
-                </div>
-                <div class="para">
-                <p>أظهر للعالم طريقة إبداعية ومبتكرة نجعل تصميم الواجهة الطريق لتحقيق هدفك وبداية طريقة رائعة في عالم التسويق الرقمي نعطي الأولوية للبساطة والتميز في تصميماتنا</p>
-            </div>
-            <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_gr"><img src="{{ asset('assets/images/soot.svg')}}" alt=""></div>
-                    <p>إدارة منصات
-                        التواصل الإجتماعي</p>
-                </div>
-                <div class="para">
-                <p>إذا كنت بحاجة إلى خدمة احترافية لإدارة حسابات وسائل التواصل الاجتماعي , فكل ما عليك فعله هو تحديد احتياجاتك وترك الباقي لفريق التسويق المتخصص لدينا</p>
-            </div>
-                <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_gr"><img src="{{ asset('assets/images/musajel.svg')}}" alt=""></div>
-                    <p>إنتاج الصوت</p>
-                </div>
-                <div class="para">
 
-                <p>إذا كنت بحاجة إلى خدمة احترافية لإدارة حسابات وسائل التواصل الاجتماعي , فكل ما عليك فعله هو تحديد احتياجاتك وترك الباقي لفريق التسويق المتخصص لدينا</p>
-                </div>
-                <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_or"><img src="{{ asset('assets/images/play.svg')}}" alt=""></div>
-                    <p>إنتاج الفيديو</p>
-                </div>
-                <div class="para">
+            @foreach($category as $item)
+                <div class="cardByMe wow fadeInDown">
+                    <div class="icons">
+                        <div class="ic_bl"><img src="{{asset('upload/images/category/'.$item->image)}}" alt=""></div>
+                        <p>{{$item->name}}</p>
+                    </div>
+                    <div class="para">
 
-                <p>أظهر للعالم طريقة إبداعية ومبتكرة نجعل تصميم الواجهة الطريق لتحقيق هدفك وبداية طريقة رائعة في عالم التسويق الرقمي نعطي الأولوية للبساطة والتميز في تصميماتنا</p>
+                        <p>{{$item->description}}</p>
+                    </div>
+                    <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
                 </div>
-                <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
-            <div class="cardByMe wow fadeInDown">
-                <div class="icons">
-                    <div class="ic_bl"><img src="{{ asset('assets/images/code.svg')}}" alt=""></div>
-                    <p>تطوير التطبيقات</p>
-                </div>
-                <div class="para">
+            @endforeach
 
-                <p>نؤمن بأن فريقنا قادر على إنتاج التطبيقات ومتابعة الدعم الفني لها بشكل مذهل ، وتعزيز مكانة عملائنا في السوق</p>
-                </div>
-                <a href="" class="btn btn-warning btn-px px-4 "> <i class="fas fa-chevron-left"></i> اطلب الخدمة الآن</a>
-            </div>
         </div>
         </div>
       </section>
@@ -153,10 +101,9 @@
                 <img src="{{ asset('assets/images/من نحن.svg')}}" alt=""/> <span class="aps">ماذا نقدم ؟</span>
                </div>
                <div>
-                <h1>خبراء في التسويق الرقمي</h1>
-               <p class="info_par2">التسويق الرقمي والإعلان على جميع منصات التواصل الاجتماعي ، تصاميم الويب وتطبيقات الهاتف المحمول ، إنتاج الصوت وإنتاج الفيديو
-                <br><br>
-                اليوم ، يمكننا أن نقدم لك أدوات خاصة لنضمن لك نجاح مشروعك ! إذا كنت بحاجة إلى مشورة أو استفسارات ، فنحن دائماً في خدمتك .</p>
+                <h1>{{$rows[2]->name}}</h1>
+               <p class="info_par2">{{$rows[2]->description}}
+                .</p>
                <a href="" class="btn btn-outline-warning btn-px "> <i class="fas fa-chevron-left"></i> اعرف اكثر</a>
                </div>
             </div>
@@ -233,8 +180,8 @@
         <div class="col-lg-5 wow flipInX" data-wow-duration="3s">
           <img src="{{ asset('assets/images/Vector (10).svg')}}" alt="">
           <div class="say_client">
-            <h1>ماذا قالو عملاؤنا ؟</h1>
-            <p>مرحبًا ، هذه الشركة الجميلة التي التقينا بها على الإنترنت لصفحة الويب التي سننشئهـا لشــركتنـا قد ساهمت في ظهـــور وظيفة جيدة من خلال تقديــم أفضل الحلول في أسرع وقت ممكن. نظام العمل والفريق يستحقـــان حقًــا التقدير شركة تهتم برضا العملاء وتعمل بشكل منهجي شكرا لكم مــرة أخرى
+            <h1>{{$rows[3]->name}}</h1>
+            <p>{{$rows[3]->description}}
             </p>
           </div>
           <p class="lefts">_ مارين أحمد</p>
