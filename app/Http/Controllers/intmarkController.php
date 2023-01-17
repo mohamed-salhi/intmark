@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessPodcast;
 use App\Mail\contact;
 use App\Models\Category;
 use App\Models\ContactUs;
@@ -68,7 +69,7 @@ class intmarkController extends Controller
         }
         $Contact=ContactUs::create($request->all());
         if ($Contact){
-            Mail::to("mohamed2562289man@gmail.com")->send(new contact($request->email,$request->message,$request->name));
+            ProcessPodcast::dispatch($request->email,$request->message,$request->name);
             return response()->json([
                 'success' => 'true',
 

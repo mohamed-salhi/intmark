@@ -27,6 +27,7 @@ Route::prefix('/dashboard')->middleware('auth')->group(function (){
     Route::resource('employees',EmployeeController::class);
     Route::resource('ContactUs',ContactUsController::class)->except(['show','edit','update','store',
         'create'])->middleware('read');
+    Route::post('editservice/{id}',[CategoryController::class,'editser'])->name('editser');
 
 
 

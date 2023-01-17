@@ -31,7 +31,6 @@ class contact extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from:$this->email,
         );
     }
 
@@ -46,6 +45,7 @@ class contact extends Mailable
             view: 'name',
             with: [
                 'orderName' => $this->name,
+                'email' => $this->email,
                 'ordermessage' => $this->message,
             ],
 

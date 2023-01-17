@@ -65,16 +65,23 @@
                                                 <th data-priority="3">{{$item->name}}</th>
                                                 <th><img src="{{asset('upload/images/category/'.$item->image)}}" height="50" width="50"></th>
                                                 <th data-priority="2">{{$item->description}}</th>
+
                                                 <th>
-                                                  <select name="cars" id="cars">
-                                                      <optgroup label="service">
-                                                          @foreach($item->service as $ser)
-                                                              <option value="volvo">{{$ser->title}}</option>
 
-                                                          @endforeach
-                                                      </optgroup>
 
-                                                  </select>
+                                                    <div class="btn-group" role="group">
+                                                        <button id="btnGroupVerticalDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            {{$item->service[0]->title??''}} <i class="mdi mdi-chevron-down"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1" style="">
+                                                            @foreach($item->service as $ser)
+                                                                <a class="dropdown-item" href="#">{{$ser->title}}</a>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+
+
                                                 </th>
                                                 <td>
                                                     <div class="">
@@ -99,11 +106,19 @@
                                                                     <i data-feather="edit-2" class="mr-50"></i>
                                                                     <span>ADD Service</span>
                                                                 </button>
+                                                                <button class="dropdown-item" data-bs-toggle="modal"
+                                                                        data-bs-target="#editservice{{$item->id}}">
+                                                                    <i data-feather="edit-2" class="mr-50"></i>
+                                                                    <span>Edit Service</span>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
+
+
+
                                             <div class="modal fade" id="edit{{$item->id}}" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -132,7 +147,19 @@
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-primary">Send message</button>
                                                         </div>
+
                                                             </form>
+
+
+
+
+
+
+
+
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,6 +189,37 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
+                                            <div class="modal fade" id="editservice{{$item->id}}" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{route('editser',$item->id)}}" method="post">
+                                                                @csrf
+                                                                <div class="mb-3">
+
+
+                                                                    <label for="exampleInputEmail1" class="form-label">Name Service</label>
+                                                                    <input value="@foreach($item->service as $tag){{$tag->title}},@endforeach"
+                                                                           type="text" name="name"
+
+                                                                           class="form-control">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Send message</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
 
                                             <!-- Modal -->

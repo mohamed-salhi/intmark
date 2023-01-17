@@ -13,7 +13,9 @@ class CategoryController extends Controller
     public function index()
     {
         $category=Category::latest()->paginate(5);
+        $r[]=[];
 
+;
         return view('admin.Category.index',compact('category'));
 
     }
@@ -117,6 +119,29 @@ class CategoryController extends Controller
             'category_id'=>$id,
             'title'=>$request->name
         ]);
+        toastr()->success('Data has been ADD successfully!', 'Category');
+        return redirect()->route('Category.index');
+    }
+
+    public function editser(Request $request,$id){
+        $validator = Validator($request->all(),[
+            'name'=>'required',
+        ]);
+        if ($validator->fails()){
+            toastr()->error($validator->getMessageBag()->first(), 'Category');
+            return redirect()->route('Category.index');
+        }
+
+        $ser=explode(',',$request->name);
+$service=Service::where('category_id',$id)->delete();
+
+foreach ($ser as $item){
+    Service::Create([
+        'title'=>$item,
+        'category_id'=>$id
+    ]);
+}
+
         toastr()->success('Data has been ADD successfully!', 'Category');
         return redirect()->route('Category.index');
     }
